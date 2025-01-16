@@ -1,0 +1,11 @@
+{
+  "endpoints": [
+    "/api/goboilerplate/config",
+    "/api/goboilerplate/config/foo",
+    "/api/goboilerplate/config/bar",
+    "/api/goboilerplate/config/baz"
+  ],
+  "foo": "FOO",
+  "bar": "BAR",
+  "baz": "BAZ"
+}
