@@ -1,4 +1,4 @@
-module github.com/digitalcashdev/changemepkg
+module github.com/DigitalCashDev/goboilerplate
 
 go 1.23.1
 
