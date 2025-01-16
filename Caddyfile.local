@@ -1,0 +1,9 @@
+local.digitalcash.dev {
+	tls internal
+
+	encode gzip zstd
+
+	handle /* {
+		reverse_proxy localhost:3000
+	}
+}
