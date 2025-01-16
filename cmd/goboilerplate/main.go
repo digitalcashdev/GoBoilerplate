@@ -91,10 +91,14 @@ func main() {
 		}
 	}
 
+	defaultConfigJSONPath := "public-config.json"
+
+	configJSONPath := defaultConfigJSONPath
 	overlayFS := &internal.OverlayFS{}
 	proxyURL := fmt.Sprintf("%s://%s:%d", rpcProtocol, rpcHostname, defaultRPCPort)
 	username := ""
 	password := ""
+	flag.StringVar(&configJSONPath, "config", defaultConfigJSONPath, "JSON config path, relative to ./static/, ex: ./config.json")
 	flag.StringVar(&envPath, "env", "", "load ENVs from file, ex: ./.env")
 	flag.StringVar(&proxyURL, "rpc-url", proxyURL, "dashd RPC base URL")
 	flag.StringVar(&username, "rpc-username", "", "dashd RPC username")
@@ -112,7 +116,6 @@ func main() {
 	overlayFS.LocalFS = http.Dir(overlayFS.WebRoot)
 	overlayFS.EmbedFS = http.FS(static.FS)
 
-	configJSONPath := "public-config.json"
 	f, err := overlayFS.ForceLocalOrEmbedOpen(configJSONPath)
 	if err != nil {
 		log.Fatalf("loading RPC JSON description file '%s' failed: %v", configJSONPath, err)
